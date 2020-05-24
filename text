@@ -1,0 +1,31 @@
+https://www.youtube.com/watch?v=aEUDRBBbo-Y
+
+- sudo docker run --name gostack_desafio06_tests -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
+-> sudo docker start gostack_desafio06_tests
+- criar a database: gostack_desafio06 (usaremos no desen. da aplicação)
+- criar a database: gostack_desafio06_tests (vamos rodar os testes em um banco
+de dados)
+- yarn dev:server
+
+- criar as tabelas de transactions e categories e a migration que será uma
+coluna para relacionar as 2 primeiras tabelas.
+  - yarn typeorm migration:create -n CreateTransactions
+  - yarn typeorm migration:create -n AddCategoryIdtoTransctions
+
+- criar os models
+- yarn typeorm migration:run
+
+- fazer as rotas
+  - OBS: retornar os valores nos services, fazer a funcionalidade de add
+
+- Criar a categoria. OBS: ela será criada antes de criar a transaction
+
+-> Importaão de arqvs:
+  - Fazer a rota para importação de arq
+  - fazer a pasta config
+  - importar no routes
+  - OBS: o multer vai ser um middleware na rota de importação
+  - csv-parse: lib que usaremos para manipular os arqvs csv.
+  - OBS: se inserirmos cada arq criado no banco, criaremos uma conecção cada vez
+  que add um arq, entao vamos usar a estrategia bulk insert, vamos mapear os
+  arqvs e salvar no banco de dados de uma vez só.
